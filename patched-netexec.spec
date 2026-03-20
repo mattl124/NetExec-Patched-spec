@@ -6,6 +6,7 @@ block_cipher = None
 
 # Collect all SQLAlchemy submodules (fixes "No module named 'sqlalchemy.ext.declarative'")
 sqlalchemy_hiddenimports = collect_submodules('sqlalchemy')
+pypykatz_hiddenimports = collect_submodules('pypykatz')
 
 a = Analysis(
     ['./nxc/netexec.py'],
@@ -91,6 +92,8 @@ a = Analysis(
         'sspilib.raw._text',
         # Include all SQLAlchemy submodules
         *sqlalchemy_hiddenimports,
+        # Include all pypykatz submodules
+        *pypykatz_hiddenimports,
     ],
     hookspath=['./nxc/.hooks'],
     runtime_hooks=[],
